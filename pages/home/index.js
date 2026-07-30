@@ -185,6 +185,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                     {selectedProject?.assetsCollection?.items.map(
                       (asset, i) => (
                         <button
+                          className={s.assetButton}
                           key={i}
                           onClick={() => {
                             va.track('Opened Gallery:', {
@@ -208,10 +209,10 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   className={cn(s.info, showInfoModal && s.visible)}
                   reset={!showInfoModal || resetScroll}
                 >
-                  {selectedProject.description && (
-                    <p className={cn(s.description, 'p')}>
-                      {selectedProject.description}
-                    </p>
+                  {selectedProject.body && (
+                    <div className={s.description}>
+                      {renderer(selectedProject.body)}
+                    </div>
                   )}
                   {selectedProject.testimonial && (
                     <div className={s.testimonial}>
